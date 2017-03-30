@@ -4,8 +4,9 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from gefcli import create
-from gefcli import start
+import logging
+
+from gefcli import create, start, config, login, publish, download, clear
 
 
 class Commands(object):
@@ -17,34 +18,52 @@ class Commands(object):
         try:
             create.run()
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def start(param):
         """Start a script"""
-        start.run(param)
+        try:
+            start.run(param)
+        except Exception as error:
+            raise error
 
     @staticmethod
     def config():
         """Config GEE"""
-        return "config"
+        try:
+            config.run()
+        except Exception as error:
+            raise error
 
     @staticmethod
     def login():
         """Log in the API"""
-        return "login"
+        try:
+            login.run()
+        except Exception as error:
+            raise error
 
     @staticmethod
     def publish():
         """Publish a script"""
-        return "publish"
+        try:
+            publish.run()
+        except Exception as error:
+            raise error
 
     @staticmethod
     def download():
         """Download a script"""
-        return "download"
+        try:
+            download.run()
+        except Exception as error:
+            raise error
 
     @staticmethod
     def clear():
         """Clear docker trash"""
-        return "clear"
+        try:
+            clear.run()
+        except Exception as error:
+            raise error
