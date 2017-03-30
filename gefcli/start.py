@@ -24,7 +24,7 @@ def buildDocker(tempdir, id):
 
 def runDocker(tempdir, id, param):
     try:
-        subprocess.run("docker run {0} {1}".format(id, param), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker run --rm {0} {1}".format(id, param), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
         print(error)
