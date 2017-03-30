@@ -1,5 +1,10 @@
-from shutil import copytree
-import os
+"""Create command"""
 
-def run(param):
-    return 'Start'
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+
+def run():
+    """Start command"""
+    return 'start'
