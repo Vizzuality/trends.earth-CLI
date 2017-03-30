@@ -1,19 +1,16 @@
-from shutil import copytree
-import os
+from __future__ import absolute_import
+from gefcli import create
+from gefcli import start
 
 class Commands(object):
-    """A simple calculator class."""
+    """GEF cli"""
 
-    def create(self, name):
+    def create(self):
         """Create new project"""
-        to_dir = os.getcwd() + '/' + name
-        from_dir = os.path.dirname(os.path.realpath(__file__)) + '/skeleton'
-
-        copytree(from_dir, to_dir)
-        return 'Project %s created successfully'%(name)
+        return create.run()
 
     def start(self, param):
-        return "start"
+        return start.run(param)
 
     def config(self):
         return "config"
