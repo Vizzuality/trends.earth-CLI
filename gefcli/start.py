@@ -45,9 +45,9 @@ def run(param):
         copyfile(cwd + '/requirements.txt', tmpdirname + '/requirements.txt')
         print('Do building ....')
         id = time.time()
-        buildDocker(tmpdirname, id)
-        print('Running script ....')
-        runDocker(tmpdirname, id, param)
+        if buildDocker(tmpdirname, id):
+            print('Running script ....')
+            runDocker(tmpdirname, id, param)
 
 
 
