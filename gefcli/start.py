@@ -5,6 +5,6 @@ from __future__ import division
 from __future__ import print_function
 
 
-def run():
+def run(param):
     """Start command"""
-    return 'start'
+    return param

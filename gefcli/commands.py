@@ -14,12 +14,15 @@ class Commands(object):
     @staticmethod
     def create():
         """Create new project"""
-        return create.run()
+        try:
+            create.run()
+        except Exception as error:
+            raise error
 
     @staticmethod
     def start(param):
         """Start a script"""
-        return start.run(param)
+        start.run(param)
 
     @staticmethod
     def config():
