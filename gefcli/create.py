@@ -5,12 +5,22 @@ from __future__ import division
 from __future__ import print_function
 
 import os
+import json
 from shutil import copytree
 
 
 def is_valid(name):
     """Check if the name is valid"""
     return bool(name)
+
+
+def create_config_file(name):
+    """Create a YAML config file"""
+    config = {}
+    config['name'] = name
+    to_dir = os.getcwd() + '/' + name
+    with open(os.path.join(to_dir, 'config.json'), 'w') as config_file:
+        json.dump(config, config_file)
 
 
 def run():
@@ -24,6 +34,7 @@ def run():
         from_dir = os.path.dirname(os.path.realpath(__file__)) + '/skeleton'
 
         copytree(from_dir, to_dir)
+        create_config_file(name)
     except Exception as error:
         raise
 

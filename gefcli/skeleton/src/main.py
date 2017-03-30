@@ -1,3 +1,9 @@
+"""Custom Script"""
+
+import logging
+
+
 def run(param):
-    print("params is " + param)
+    """Custom Script"""
+    logging.debug("the params are " + param)
     return "OK"

@@ -136,7 +136,7 @@ docstring-min-length=-1
 max-nested-blocks=5
 [FORMAT]
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=200
 # Regexp for a line that is allowed to be longer than the limit.
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$
 # Allow the body of an if to be on the same line as the test if there is no
@@ -254,4 +254,4 @@ max-public-methods=20
 # Maximum number of boolean expressions in a if statement
 max-bool-expr=5
 [IMPORTS]
-# Deprecated modules which should not be used, separated by 
+# Deprecated modules which should not be used, separated by

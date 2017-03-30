@@ -8,47 +8,51 @@ import tempfile
 import os
 import subprocess
 import time
+import logging
 
-from shutil import copytree
-from shutil import copyfile
+from shutil import copytree, copyfile
 
 
-def buildDocker(tempdir, id):
+def build_docker(tempdir, dockerid):
+    """Build docker"""
     try:
-
-        subprocess.run("docker build -t {0} .".format(id), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker build -t {0} .".format(dockerid), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
-        print(error)
+        logging.error(error)
         return False
 
-def runDocker(tempdir, id, param):
+
+def run_docker(tempdir, dockerid, param):
+    """Run docker"""
     try:
-        subprocess.run("docker run --rm {0} {1}".format(id, param), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker run --rm {0} {1}".format(dockerid, param), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
-        print(error)
+        logging.error(error)
         return False
+
 
 def run(param):
     """Start command"""
-    print('Creating temporary file...')
+    logging.debug('Creating temporary file...')
+    # Current folder
     cwd = os.getcwd()
+    # Getting Dockerfile from /run folder
     dockerfile = os.path.dirname(os.path.realpath(__file__)) + '/run/Dockerfile'
+
     with tempfile.TemporaryDirectory() as tmpdirname:
-        print('Copying files in ' + tmpdirname)
-        print('Copying Dockerfile ....')
-        copyfile(dockerfile, tmpdirname + '/Dockerfile' )
-        print('Copying src folder ....')
+        logging.debug('Copying Dockerfile ...')
+        copyfile(dockerfile, tmpdirname + '/Dockerfile')
+
+        logging.debug('Copying src folder ...')
         copytree(cwd + '/src', tmpdirname + '/src')
-        print('Copying requirements ....')
+
+        logging.debug('Copying requirements ...')
         copyfile(cwd + '/requirements.txt', tmpdirname + '/requirements.txt')
-        print('Do building ....')
-        id = time.time()
-        if buildDocker(tmpdirname, id):
+
+        logging.debug('Building ...')
+        dockerid = time.time()
+        if build_docker(tmpdirname, dockerid):
             print('Running script ....')
-            runDocker(tmpdirname, id, param)
-
-
-
-    return param
+            run_docker(tmpdirname, dockerid, param)
