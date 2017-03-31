@@ -37,11 +37,11 @@ class Commands(object):
             logging.error(error)
 
     @staticmethod
-    def config():
+    def config(action, var_name, value=None):
         """Config GEE"""
         try:
             print('Configuring the script')
-            if config.run():
+            if config.run(action, var_name, value):
                 print('Configuration done')
             else:
                 print('Error in the config')
