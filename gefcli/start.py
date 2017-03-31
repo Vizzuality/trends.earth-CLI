@@ -16,7 +16,7 @@ from shutil import copytree, copyfile
 def build_docker(tempdir, dockerid):
     """Build docker"""
     try:
-        subprocess.run("docker build -e ENV=dev -t {0} .".format(dockerid), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker build -t {0} .".format(dockerid), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)
@@ -26,7 +26,7 @@ def build_docker(tempdir, dockerid):
 def run_docker(tempdir, dockerid, param):
     """Run docker"""
     try:
-        subprocess.run("docker run --rm {0} {1}".format(dockerid, param), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker run -e ENV=dev --rm {0} {1}".format(dockerid, param), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)
