@@ -7,4 +7,4 @@ from __future__ import print_function
 
 def run():
     """Login command"""
-    return 'login'
+    return True

@@ -53,6 +53,9 @@ def run(param):
 
         logging.debug('Building ...')
         dockerid = time.time()
+        success = False
         if build_docker(tmpdirname, dockerid):
-            print('Running script ....')
-            run_docker(tmpdirname, dockerid, param)
+            logging.debug('Running script ....')
+            success = run_docker(tmpdirname, dockerid, param)
+
+        return success

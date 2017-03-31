@@ -7,4 +7,4 @@ from __future__ import print_function
 
 def run():
     """Clear command"""
-    return 'clear'
+    return True

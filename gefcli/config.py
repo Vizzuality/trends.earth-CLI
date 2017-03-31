@@ -7,4 +7,4 @@ from __future__ import print_function
 
 def run():
     """Config command"""
-    return 'config'
+    return True

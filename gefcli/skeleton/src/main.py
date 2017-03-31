@@ -1,9 +1,7 @@
 """Custom Script"""
 
-import logging
 
-
-def run(param):
+def run(params, logger):
     """Custom Script"""
-    logging.debug("the params are " + param)
+    logger.debug("the params are " + params)
     return "OK"

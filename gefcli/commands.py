@@ -16,54 +16,82 @@ class Commands(object):
     def create():
         """Create new project"""
         try:
-            create.run()
+            print('Creating the project')
+            if create.run():
+                print('Project created successfully')
+            else:
+                print('Project not created')
         except Exception as error:
             logging.error(error)
 
     @staticmethod
-    def start(param):
+    def start(param={}):
         """Start a script"""
         try:
-            start.run(param)
+            print('Running the script')
+            if start.run(param):
+                print('Execution Finished')
+            else:
+                print('Error running the script')
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def config():
         """Config GEE"""
         try:
-            config.run()
+            print('Configuring the script')
+            if config.run():
+                print('Configuration done')
+            else:
+                print('Error in the config')
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def login():
         """Log in the API"""
         try:
-            login.run()
+            print('Logging the user in')
+            if login.run():
+                print('You are logged')
+            else:
+                print('Error with the user')
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def publish():
         """Publish a script"""
         try:
-            publish.run()
+            print('Publishing the script')
+            if publish.run():
+                print('Script published successfully')
+            else:
+                print('Error publishing the script')
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def download():
         """Download a script"""
         try:
-            download.run()
+            print('Downloading the script')
+            if download.run():
+                print('Script downloaded successfully')
+            else:
+                print('Error downloading the script')
         except Exception as error:
-            raise error
+            logging.error(error)
 
     @staticmethod
     def clear():
         """Clear docker trash"""
         try:
-            clear.run()
+            print('Cleaning trash')
+            if clear.run():
+                print('You are cleaned enough')
+            else:
+                print('Error cleaning the system')
         except Exception as error:
-            raise error
+            logging.error(error)

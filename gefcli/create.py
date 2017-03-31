@@ -4,8 +4,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+
 import os
 import json
+import logging
 from shutil import copytree
 
 
@@ -36,6 +38,7 @@ def run():
         copytree(from_dir, to_dir)
         create_config_file(name)
     except Exception as error:
-        raise
+        logging.error(error)
+        return False
 
-    return 'Project %s created successfully' % (name)
+    return True

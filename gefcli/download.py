@@ -7,4 +7,4 @@ from __future__ import print_function
 
 def run():
     """Download command"""
-    return 'download'
+    return True
