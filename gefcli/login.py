@@ -17,13 +17,13 @@ EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
 def is_valid(email):
     """Check if the email is valid"""
-    return bool(email)
+    return bool(email) and EMAIL_REGEX.match(email)
 
 def run():
     """Login command"""
 
     email = None
-    while email is None or not is_valid(email) or not EMAIL_REGEX.match(email):
+    while email is None or not is_valid(email):
         email = input("Please enter your email: ")
 
     password = None
