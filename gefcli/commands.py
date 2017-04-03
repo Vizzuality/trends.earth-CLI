@@ -8,7 +8,6 @@ import logging
 
 from gefcli import create, start, config, login, publish, download, clear
 
-
 class Commands(object):
     """GEF Command class Wrapper"""
 
@@ -41,10 +40,10 @@ class Commands(object):
         """Config GEE"""
         try:
             print('Configuring the script')
-            if config.run(action, var_name, value):
+            if configuration.run(action, var_name, value):
                 print('Configuration done')
             else:
-                print('Error in the config')
+                print('Error in the configuration')
         except Exception as error:
             logging.error(error)
 

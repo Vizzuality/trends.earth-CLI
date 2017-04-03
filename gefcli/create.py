@@ -17,11 +17,11 @@ def is_valid(name):
 
 
 def create_config_file(name):
-    """Create a YAML config file"""
+    """Create a YAML configuration file"""
     config = {}
     config['name'] = name
     to_dir = os.getcwd() + '/' + name
-    with open(os.path.join(to_dir, 'config.json'), 'w') as config_file:
+    with open(os.path.join(to_dir, 'configuration.json'), 'w') as config_file:
         json.dump(config, config_file)
 
 
