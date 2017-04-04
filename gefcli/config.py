@@ -26,6 +26,13 @@ def show(var_name, value):
             print('Value: ' + str(data[var_name]))
     return True
 
+def get(var_name):
+    with open(gef_config_dir, 'r+') as outfile:
+        data = yaml.load(outfile)
+        if data is not None:
+            return data[var_name]
+    return True
+
 def unset(var_name, value):
     with open(gef_config_dir, 'a+') as outfile:
         data = yaml.load(outfile)

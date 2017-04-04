@@ -4,9 +4,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from termcolor import colored
+
 import logging
 
-from gefcli import create, start, config, login, publish, download, clear
+from gefcli import create, start, configuration, login, publish, download, clear
 
 class Commands(object):
     """GEF Command class Wrapper"""
@@ -17,9 +19,9 @@ class Commands(object):
         try:
             print('Creating the project')
             if create.run():
-                print('Project created successfully')
+                print(colored('Project created successfully', 'green'))
             else:
-                print('Project not created')
+                print(colored('Project not created', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -29,9 +31,9 @@ class Commands(object):
         try:
             print('Running the script')
             if start.run(param):
-                print('Execution Finished')
+                print(colored('Execution Finished', 'green'))
             else:
-                print('Error running the script')
+                print(colored('Error running the script', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -41,9 +43,9 @@ class Commands(object):
         try:
             print('Configuring the script')
             if configuration.run(action, var_name, value):
-                print('Configuration done')
+                print(colored('Configuration done', 'green'))
             else:
-                print('Error in the configuration')
+                print(colored('Error in the configuration', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -53,9 +55,9 @@ class Commands(object):
         try:
             print('Logging the user in')
             if login.run():
-                print('You are logged')
+                print(colored('You are logged', 'green'))
             else:
-                print('Error with the user')
+                print(colored('Error with the user', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -65,9 +67,9 @@ class Commands(object):
         try:
             print('Publishing the script')
             if publish.run():
-                print('Script published successfully')
+                print(colored('Script published successfully', 'green'))
             else:
-                print('Error publishing the script')
+                print(colored('Error publishing the script', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -77,9 +79,9 @@ class Commands(object):
         try:
             print('Downloading the script')
             if download.run():
-                print('Script downloaded successfully')
+                print(colored('Script downloaded successfully', 'green'))
             else:
-                print('Error downloading the script')
+                print(colored('Error downloading the script', 'red'))
         except Exception as error:
             logging.error(error)
 
@@ -89,8 +91,8 @@ class Commands(object):
         try:
             print('Cleaning trash')
             if clear.run():
-                print('You are cleaned enough')
+                print(colored('You are cleaned enough', 'green'))
             else:
-                print('Error cleaning the system')
+                print(colored('Error cleaning the system', 'red'))
         except Exception as error:
             logging.error(error)
