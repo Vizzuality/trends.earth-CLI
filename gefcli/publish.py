@@ -23,7 +23,9 @@ def make_tarfile(name):
     makefile = os.path.join(to_dir, name +'.tar.gz')
     logging.debug('Creating tar.gz file in path: %s' % (to_dir))
     with tarfile.open(makefile, "w:gz") as tar:
-        tar.add(to_dir, arcname=os.path.basename(to_dir))
+        tar.add(to_dir + '/configuration.json', arcname='configuration.json')
+        tar.add(to_dir + '/requirements.txt', arcname='requirements.txt')
+        tar.add(to_dir + '/src', arcname='src')
         return makefile
 
 def read_configuration():
@@ -69,8 +71,7 @@ def publish():
 
         print(response)
         data = response.json()
-        print (data)
-        configuration['id']=response['id']
+        configuration['id']=data['data']['id']
         write_configuration(configuration)
         return True
     except (OSError, IOError) as e:
