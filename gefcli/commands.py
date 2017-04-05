@@ -8,7 +8,7 @@ from termcolor import colored
 
 import logging
 
-from gefcli import create, start, configuration, login, publish, download, clear
+from gefcli import create, start, configuration, login, publish, download, clear, info, logs
 
 class Commands(object):
     """GEF Command class Wrapper"""
@@ -94,5 +94,31 @@ class Commands(object):
                 print(colored('You are cleaned enough', 'green'))
             else:
                 print(colored('Error cleaning the system', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def info():
+        """Get info script"""
+        try:
+            print('Getting info script')
+            if info.run():
+                pass
+            else:
+                print(colored('Error getting info script', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def logs(all=False):
+        """Get logs of script"""
+        try:
+            print('Getting logs of script build')
+            if logs.run():
+                pass
+            else:
+                print(colored('Error getting logs', 'red'))
+        except (KeyboardInterrupt, SystemExit):
+            raise
         except Exception as error:
             logging.error(error)

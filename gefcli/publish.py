@@ -69,7 +69,6 @@ def publish():
                 print(colored('Error publishing script.', 'red'))
             return False
 
-        print(response)
         data = response.json()
         configuration['id']=data['data']['id']
         write_configuration(configuration)
