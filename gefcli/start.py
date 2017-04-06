@@ -10,8 +10,12 @@ import subprocess
 import time
 import logging
 
+from gefcli import config
 from shutil import copytree, copyfile
 
+def read_gee_token():
+    """Obtain jwt token of config user"""
+    return config.get('GEE', '')
 
 def build_docker(tempdir, dockerid):
     """Build docker"""
@@ -26,7 +30,8 @@ def build_docker(tempdir, dockerid):
 def run_docker(tempdir, dockerid, param):
     """Run docker"""
     try:
-        subprocess.run("docker run -e ENV=dev --rm {0} {1}".format(dockerid, param), shell=True, check=True, cwd=tempdir)
+        gee = read_gee_token()
+        subprocess.run("docker run -e ENV=dev -e EE_PRIVATE_KEY={2} --rm {0} {1}".format(dockerid, param, gee), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)

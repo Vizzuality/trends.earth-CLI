@@ -39,7 +39,7 @@ def get_logs(script, last_date):
     if last_date:
         start_query = '?start=' +  last_date.isoformat()
 
-    response = requests.get(url=SETTINGS.get('url_api') + '/api/v1/script/' + script['id'] + '/logs' + start_query,
+    response = requests.get(url=SETTINGS.get('url_api') + '/api/v1/script/' + script['id'] + '/log' + start_query,
                             headers={'Authorization': 'Bearer ' + token})
     if response.status_code != 200:
         if response.status_code == 401:

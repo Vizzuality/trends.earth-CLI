@@ -47,6 +47,16 @@ def read_jwt_token():
     """Obtain jwt token of config user"""
     return config.get('JWT')
 
+def sure_overwrite():
+    sure = None
+
+    while sure is None or not bool(sure) or not sure.lower() in ['y', 'n']:
+        sure = input("With this action you will overwrite this script. Are you sure? (Y/n): ")
+        if sure == '':
+            sure = 'y'
+
+    return sure == 'y'
+
 
 def publish():
     """Publish script in API"""
@@ -59,9 +69,18 @@ def publish():
         tarfile = make_tarfile(configuration['name'])
         logging.debug('Doing request with file %s' %(tarfile))
         token = read_jwt_token()
-        response = requests.post(url=SETTINGS.get('url_api')+'/api/v1/script', files={'file': open(tarfile, 'rb')}, headers={'Authorization': 'Bearer ' + token})
 
-        if response.status_code != 200:
+        response = None
+        if 'id' in configuration:
+            sure = sure_overwrite()
+            if not sure:
+                return False
+
+            response = requests.patch(url=SETTINGS.get('url_api')+'/api/v1/script/' + configuration['id'], files={'file': open(tarfile, 'rb')}, headers={'Authorization': 'Bearer ' + token})
+        else:
+            response = requests.post(url=SETTINGS.get('url_api')+'/api/v1/script', files={'file': open(tarfile, 'rb')}, headers={'Authorization': 'Bearer ' + token})
+
+        if response and response.status_code != 200:
             logging.error(response.json())
             if response.status_code == 401:
                 print(colored('Do you need login', 'red'))
