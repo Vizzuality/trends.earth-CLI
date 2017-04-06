@@ -29,8 +29,9 @@ def show(var_name, value):
 def get(var_name):
     with open(gef_config_dir, 'r+') as outfile:
         data = yaml.load(outfile)
-        if data is not None:
+        if data is not None and var_name in data:
             return data[var_name]
+        return ''
     return True
 
 def unset(var_name, value):

@@ -15,11 +15,11 @@ from shutil import copytree, copyfile
 
 def read_gee_token():
     """Obtain jwt token of config user"""
-    return config.get('GEE')
+    return config.get('EE_PRIVATE_KEY')
 
 def read_gee_service_account():
     """Obtain jwt token of config user"""
-    return config.get('SERVICE_ACCOUNT')
+    return config.get('EE_SERVICE_ACCOUNT')
 
 def build_docker(tempdir, dockerid):
     """Build docker"""
@@ -35,7 +35,7 @@ def run_docker(tempdir, dockerid, param):
     """Run docker"""
     try:
         gee = read_gee_token()
-        gee = read_gee_service_account()
+        service_account = read_gee_service_account()
         subprocess.run("docker run -e ENV=dev -e EE_PRIVATE_KEY={2} -e EE_SERVICE_ACCOUNT={3} --rm {0} {1}".format(dockerid, param, gee, service_account), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
