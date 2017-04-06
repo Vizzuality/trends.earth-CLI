@@ -80,7 +80,7 @@ def publish():
         else:
             response = requests.post(url=SETTINGS.get('url_api')+'/api/v1/script', files={'file': open(tarfile, 'rb')}, headers={'Authorization': 'Bearer ' + token})
 
-        if response and response.status_code != 200:
+        if response.status_code != 200:
             logging.error(response.json())
             if response.status_code == 401:
                 print(colored('Do you need login', 'red'))
