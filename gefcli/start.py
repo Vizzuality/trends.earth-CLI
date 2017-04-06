@@ -15,7 +15,7 @@ from shutil import copytree, copyfile
 
 def read_gee_token():
     """Obtain jwt token of config user"""
-    return config.get('GEE', '')
+    return config.get('GEE')
 
 def build_docker(tempdir, dockerid):
     """Build docker"""
