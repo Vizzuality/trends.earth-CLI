@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import json
 import ee
 
 
@@ -94,17 +95,16 @@ def hansen(threshold, geojson, begin, end):
 
 def run(params, logger):
     """."""
-    logger.debug(str(params))
+    logger.debug('First')
     thresh = params.get('thresh', None)
-    geojson = params.get('geojson', None)
     begin = params.get('begin', None)
     end = params.get('end', None)
+    geojson = json.loads('{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[-9.4921875,33.7243396617476],[-9.4921875,39.36827914916014],[2.8125,39.36827914916014],[2.8125,33.7243396617476],[-9.4921875,33.7243396617476]]]}}]}')
 
-    logger.debug(thresh)
-    logger.debug(geojson)
-    logger.debug(begin)
-    logger.debug(end)
+    logger.debug('Doing')
     if not thresh or not geojson or not begin or not end:
+        logger.debug('Error')
         return False
 
+    logger.debug('Done')
     return hansen(thresh, geojson, begin, end)

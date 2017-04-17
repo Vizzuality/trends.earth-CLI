@@ -14,13 +14,13 @@ Check out the other parts of the GEF project:
 
 ### Requirements
 
-- Python 3 [Python](https://www.python.org/)
-- pip (pip3). Check the version ```pip -V```
+- Python 3 [Download Python](https://www.python.org/)
+- pip (pip3). You can check the version you have installed doing ```pip -V```
 - virtualenv. ```pip install virtualenv```
 
 ### Setup
 
-- Clone the repo and go to the folder
+- Clone the repo and move to the folder
 
 ```
 git clone https://github.com/Vizzuality/GEF-CLI
@@ -75,9 +75,69 @@ python ../gefcli start
 ```
 
 ### Config
+
+To configure basic params like a GEE Account.
+
+```
+python gefcli config set EE_SERVICE_ACCOUNT <value>
+python gefcli config set EE_SERVICE_ACCOUNT <value>
+```
+
+It is also possible to see the current config
+
+```
+python gefcli config show EE_SERVICE_ACCOUNT
+python gefcli config show EE_SERVICE_ACCOUNT
+```
+
+And even unset one or both of them
+
+```
+python gefcli config unset EE_SERVICE_ACCOUNT
+python gefcli config unset EE_SERVICE_ACCOUNT
+```
+
 ### Login
+
+To log in the API. This step is necessary when publishing scripts
+
+```
+python gefcli login
+```
+
 ### Publish
-### Download
-### Clear
-### Info
+
+This command allows the user to publish the script to prod. As it was said, it's required to be logged in before
+publish a script.
+
+```
+python gefcli publish
+```
+
 ### Logs
+
+To see the logs printed by the script.
+
+```
+python gefcli logs
+```
+
+### Info
+
+To see some basic info about the script
+
+```
+python gefcli info
+```
+
+### Clear
+
+This can be used to clean the unused docker images
+
+```
+python gefcli info
+```
+
+### Download
+
+Not yet
