@@ -20,7 +20,7 @@ Check out the other parts of the GEF project:
 
 ### Setup
 
-- Clone the repo and move to the folder
+- Clone the repo and go to the folder
 
 ```
 git clone https://github.com/Vizzuality/GEF-CLI
@@ -45,14 +45,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Now you can use the CLI.
+Now you can use the CLI commands
 
 ## Commands
 
 ### Create
 
 To create a new script.
-The program will ask for a non-existing name.
+The program will ask you for a name of your script.
 
 ```
 python gefcli create
@@ -61,7 +61,7 @@ python gefcli create
 ### Start
 
 To run a script locally.
-First, go to the folder where the script has been created and run
+First, go to the folder where the script has been created and run the following:
 
 ```
 python (relativepath) start
@@ -107,7 +107,7 @@ python gefcli login
 
 ### Publish
 
-This command allows the user to publish the script to prod. As it was said, it's required to be logged in before
+This command allows the user to publish the script to prod. As it was said, it's required to be logged before
 publish a script.
 
 ```
@@ -141,3 +141,23 @@ python gefcli info
 ### Download
 
 Not yet
+
+## Examples
+
+### Tensorflow
+
+It defines, trains and evaluates a simple perceptron model to identify handwritten digits from the MNIST dataset.
+
+You can test the behavior doing the following:
+
+```
+python ../../gefcli start
+```
+
+### Numpy
+
+This script just concatenates two numpy arrays. It also shows how to define a custom Python class.
+
+### Google Earth Engine
+
+It calculates the umd forest loss or gain based on a given area and a period of time.
