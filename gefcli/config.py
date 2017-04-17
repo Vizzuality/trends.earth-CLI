@@ -11,12 +11,13 @@ import logging
 gef_config_dir = os.path.expanduser('~') + '/.gef.yml'
 
 def set(var_name, value):
-    with open(gef_config_dir, 'a+') as outfile:
-        data = yaml.load(outfile)
-        if data is None:
-            data = {}
-        data[var_name] = value
-        yaml.dump(data, outfile, default_flow_style=False)
+    with open(gef_config_dir, 'r+') as infile:
+        data = yaml.load(infile)
+        with open(gef_config_dir, 'w+') as outfile:
+            if data is None:
+                data = {}
+            data[var_name] = value
+            yaml.dump(data, outfile, default_flow_style=False)
     return True
 
 def show(var_name, value):
@@ -35,11 +36,12 @@ def get(var_name):
     return True
 
 def unset(var_name, value):
-    with open(gef_config_dir, 'a+') as outfile:
-        data = yaml.load(outfile)
-        if data is not None:
-            data.pop(var_name, None)
-            yaml.dump(data, outfile, default_flow_style=False)
+    with open(gef_config_dir, 'r+') as infile:
+        data = yaml.load(infile)
+        with open(gef_config_dir, 'w+') as outfile:
+            if data is not None:
+                data.pop(var_name, None)
+                yaml.dump(data, outfile, default_flow_style=False)
     return True
 
 ACTIONS = {

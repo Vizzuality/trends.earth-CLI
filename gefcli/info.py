@@ -50,6 +50,7 @@ def run():
                 print('Name: ' + data['data']['slug'])
                 print('Status: ' + data['data']['status'])
                 print('CreatedAt: ' + data['data']['created_at'])
+                print('Run script: ' + SETTINGS.get('url_api') + '/api/v1/script/' + data['data']['name'] + '/run?params')
 
     except Exception as error:
         logging.error(error)

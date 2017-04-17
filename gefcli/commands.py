@@ -8,7 +8,7 @@ from termcolor import colored
 
 import logging
 
-from gefcli import create, start, configuration, login, publish, download, clear, info, logs
+from gefcli import create, start, config, login, publish, download, clear, info, logs
 
 class Commands(object):
     """GEF Command class Wrapper"""
@@ -26,7 +26,7 @@ class Commands(object):
             logging.error(error)
 
     @staticmethod
-    def start(param={}):
+    def start(param=''):
         """Start a script"""
         try:
             print('Running the script')
@@ -42,7 +42,7 @@ class Commands(object):
         """Config GEE"""
         try:
             print('Configuring the script')
-            if configuration.run(action, var_name, value):
+            if config.run(action, var_name, value):
                 print(colored('Configuration done', 'green'))
             else:
                 print(colored('Error in the configuration', 'red'))
