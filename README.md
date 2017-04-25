@@ -78,23 +78,29 @@ python ../gefcli start
 
 To configure basic params like a GEE Account.
 
+For EE_PRIVATE_KEY param it's neccesary set the value in base64 encode. To encode use the next command:
+
+```
+cat privatekey.pem | base64
+```
+
 ```
 python gefcli config set EE_SERVICE_ACCOUNT <value>
-python gefcli config set EE_SERVICE_ACCOUNT <value>
+python gefcli config set EE_PRIVATE_KEY <base64value>
 ```
 
 It is also possible to see the current config
 
 ```
 python gefcli config show EE_SERVICE_ACCOUNT
-python gefcli config show EE_SERVICE_ACCOUNT
+python gefcli config show EE_PRIVATE_KEY
 ```
 
 And even unset one or both of them
 
 ```
 python gefcli config unset EE_SERVICE_ACCOUNT
-python gefcli config unset EE_SERVICE_ACCOUNT
+python gefcli config unset EE_PRIVATE_KEY
 ```
 
 ### Login
@@ -116,7 +122,7 @@ python gefcli publish
 
 ### Logs
 
-To see the logs printed by the script.
+To see the build logs printed by the script.
 
 ```
 python gefcli logs
@@ -132,11 +138,7 @@ python gefcli info
 
 ### Clear
 
-This can be used to clean the unused docker images
-
-```
-python gefcli info
-```
+Not yet
 
 ### Download
 
