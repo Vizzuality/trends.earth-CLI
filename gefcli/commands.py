@@ -74,11 +74,11 @@ class Commands(object):
             logging.error(error)
 
     @staticmethod
-    def download():
+    def download(script_id=None):
         """Download a script"""
         try:
             print('Downloading the script')
-            if download.run():
+            if download.run(script_id):
                 print(colored('Script downloaded successfully', 'green'))
             else:
                 print(colored('Error downloading the script', 'red'))

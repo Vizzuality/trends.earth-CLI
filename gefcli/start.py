@@ -62,7 +62,7 @@ def run(param):
         copyfile(cwd + '/requirements.txt', tmpdirname + '/requirements.txt')
 
         logging.debug('Building ...')
-        dockerid = time.time()
+        dockerid = 'gef-local-'+str(time.time())
         success = False
         if build_docker(tmpdirname, dockerid):
             logging.debug('Running script ....')
