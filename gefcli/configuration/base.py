@@ -1,4 +1,4 @@
 
 SETTINGS = {
-    'url_api': 'http://52.20.71.142'
+    'url_api': 'https://api.resilienceatlas.org'
 }
