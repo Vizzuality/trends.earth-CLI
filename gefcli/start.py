@@ -6,12 +6,23 @@ from __future__ import print_function
 
 import tempfile
 import os
+import json
 import subprocess
 import time
 import logging
+import base64
 
 from gefcli import config
 from shutil import copytree, copyfile
+
+
+def query_to_dict(query):
+    params = query.split('&')
+    query_data = {}
+    for param in params:
+        key, value = param.split('=')
+        query_data[key] = value
+    return query_data
 
 def read_gee_token():
     """Obtain jwt token of config user"""
@@ -36,20 +47,27 @@ def run_docker(tempdir, dockerid, param):
     try:
         gee = read_gee_token()
         service_account = read_gee_service_account()
-        subprocess.run("docker run -e ENV=dev -e EE_PRIVATE_KEY={2} -e EE_SERVICE_ACCOUNT={3} --rm {0} \"{1}\"".format(dockerid, param, gee, service_account), shell=True, check=True, cwd=tempdir)
+        subprocess.run("docker run -e ENV=dev -e EE_PRIVATE_KEY={2} -e EE_SERVICE_ACCOUNT={3} --rm {0} {1}".format(dockerid, param, gee, service_account), shell=True, check=True, cwd=tempdir)
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)
         return False
 
 
-def run(param):
+def run(param, payload):
     """Start command"""
     logging.debug('Creating temporary file...')
     # Current folder
     cwd = os.getcwd()
     # Getting Dockerfile from /run folder
     dockerfile = os.path.dirname(os.path.realpath(__file__)) + '/run/Dockerfile'
+
+    try:
+        with open(payload) as data_file:
+            payload_data = dict(json.load(data_file))
+    except Exception as error:
+        logging.error(error)
+        return False
 
     with tempfile.TemporaryDirectory() as tmpdirname:
         logging.debug('Copying Dockerfile ...')
@@ -66,6 +84,10 @@ def run(param):
         success = False
         if build_docker(tmpdirname, dockerid):
             logging.debug('Running script ....')
-            success = run_docker(tmpdirname, dockerid, param)
+            param_dict = query_to_dict(param)
+            param_dict.update(payload_data)
+            param_serial = json.dumps(param_dict).encode('utf-8')
+            param_serial = base64.b64encode(param_serial)
+            success = run_docker(tmpdirname, dockerid, param_serial)
 
         return success

@@ -26,11 +26,11 @@ class Commands(object):
             logging.error(error)
 
     @staticmethod
-    def start(param=''):
+    def start(queryParams='', payload=''):
         """Start a script"""
         try:
             print('Running the script')
-            if start.run(param):
+            if start.run(queryParams, payload):
                 print(colored('Execution Finished', 'green'))
             else:
                 print(colored('Error running the script', 'red'))
