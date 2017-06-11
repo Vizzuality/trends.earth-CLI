@@ -33,10 +33,23 @@ cd GEF-CLI
 virtualenv -p python3 venv
 ```
 
+Note that if you are using Windows, and your default python is python 2.7, then
+you will need to specify the path to Python 3 using `--python`. For example:
+
+```
+virtualenv --python "C:\Users\azvol\Anaconda3\python.exe" venv
+```
+
 - Activate it (you should do this step any time you want to run the project locally)
 
 ```
 source venv/bin/activate
+```
+
+or (on a Windows box using a Docker Quickstart terminal):
+
+```
+source venv/Scripts/activate
 ```
 
 - Install the dependencies
