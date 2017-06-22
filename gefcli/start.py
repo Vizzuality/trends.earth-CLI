@@ -62,12 +62,13 @@ def run(param, payload):
     # Getting Dockerfile from /run folder
     dockerfile = os.path.dirname(os.path.realpath(__file__)) + '/run/Dockerfile'
 
-    try:
-        with open(payload) as data_file:
-            payload_data = dict(json.load(data_file))
-    except Exception as error:
-        logging.error(error)
-        return False
+    if payload and payload != '':
+        try:
+            with open(payload) as data_file:
+                payload_data = dict(json.load(data_file))
+        except Exception as error:
+            logging.error(error)
+            return False
 
     with tempfile.TemporaryDirectory() as tmpdirname:
         logging.debug('Copying Dockerfile ...')
