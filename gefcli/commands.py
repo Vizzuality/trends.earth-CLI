@@ -1,0 +1,124 @@
+"""Wrapper for the CLI commands."""
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+from termcolor import colored
+
+import logging
+
+from gefcli import create, start, config, login, publish, download, clear, info, logs
+
+class Commands(object):
+    """GEF Command class Wrapper"""
+
+    @staticmethod
+    def create():
+        """Create new project"""
+        try:
+            print('Creating the project')
+            if create.run():
+                print(colored('Project created successfully', 'green'))
+            else:
+                print(colored('Project not created', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def start(queryParams='', payload=''):
+        """Start a script"""
+        try:
+            print('Running the script')
+            if start.run(queryParams, payload):
+                print(colored('Execution Finished', 'green'))
+            else:
+                print(colored('Error running the script', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def config(action, var_name, value=None):
+        """Config GEE"""
+        try:
+            print('Configuring the script')
+            if config.run(action, var_name, value):
+                print(colored('Configuration done', 'green'))
+            else:
+                print(colored('Error in the configuration', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def login():
+        """Log in the API"""
+        try:
+            print('Logging the user in')
+            if login.run():
+                print(colored('You are logged', 'green'))
+            else:
+                print(colored('Error with the user', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def publish():
+        """Publish a script"""
+        try:
+            print('Publishing the script')
+            if publish.run():
+                print(colored('Script published successfully', 'green'))
+            else:
+                print(colored('Error publishing the script', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def download(script_id=None):
+        """Download a script"""
+        try:
+            print('Downloading the script')
+            if download.run(script_id):
+                print(colored('Script downloaded successfully', 'green'))
+            else:
+                print(colored('Error downloading the script', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def clear():
+        """Clear docker trash"""
+        try:
+            print('Cleaning trash')
+            if clear.run():
+                print(colored('You are cleaned enough', 'green'))
+            else:
+                print(colored('Error cleaning the system', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def info():
+        """Get info script"""
+        try:
+            print('Getting info script')
+            if info.run():
+                pass
+            else:
+                print(colored('Error getting info script', 'red'))
+        except Exception as error:
+            logging.error(error)
+
+    @staticmethod
+    def logs(all=False):
+        """Get logs of script"""
+        try:
+            print('Getting logs of script build')
+            if logs.run():
+                pass
+            else:
+                print(colored('Error getting logs', 'red'))
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except Exception as error:
+            logging.error(error)
