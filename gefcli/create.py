@@ -17,7 +17,7 @@ def is_valid(name):
 
 
 def create_config_file(name):
-    """Create a YAML configuration file"""
+    """Create a JSON configuration file"""
     config = {}
     config['name'] = name
     to_dir = os.getcwd() + '/' + name

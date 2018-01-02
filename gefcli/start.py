@@ -62,6 +62,7 @@ def run(param, payload):
     # Getting Dockerfile from /run folder
     dockerfile = os.path.dirname(os.path.realpath(__file__)) + '/run/Dockerfile'
 
+    payload_data = {}
     if payload and payload != '':
         try:
             with open(payload) as data_file:
@@ -85,7 +86,8 @@ def run(param, payload):
         success = False
         if build_docker(tmpdirname, dockerid):
             logging.debug('Running script ....')
-            param_dict = query_to_dict(param)
+            logging.info(param)
+            param_dict = query_to_dict(param) if param != '' else {}
             param_dict.update(payload_data)
             param_serial = json.dumps(param_dict).encode('utf-8')
             param_serial = base64.b64encode(param_serial)

@@ -58,7 +58,7 @@ def sure_overwrite():
     return sure == 'y'
 
 
-def publish():
+def publish(public=False):
     """Publish script in API"""
     tarfile = None
     try:
@@ -89,8 +89,14 @@ def publish():
             return False
 
         data = response.json()
-        configuration['id']=data['data']['id']
+        configuration['id'] = data['data']['id']
         write_configuration(configuration)
+        if public:
+            response = requests.post(url=SETTINGS.get('url_api')+'/api/v1/script/' + configuration['id'] + '/publish', headers={'Authorization': 'Bearer ' + token})
+            if response.status_code != 200:
+                logging.error(response.json())
+                print(colored('Error making the script public', 'red'))
+                return False
         return True
     except (OSError, IOError) as e:
         print(colored('Execute this command in a GEF project', 'red'))
@@ -100,6 +106,6 @@ def publish():
             os.remove(path=tarfile)
 
 
-def run():
+def run(public=False):
     """Publish command"""
-    return publish()
+    return publish(public)

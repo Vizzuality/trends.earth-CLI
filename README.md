@@ -1,14 +1,14 @@
-# GEF CLI
+# trends.earth CLI
 
-This project belongs to the GEF Project.
+This project belongs to the trends.earth Project.
 
-This repo implements the CLI of the GEF Environment. It allows to create and test custom scripts locally. It also can be used to publish the scripts to the GEF Environment
+This repo implements the CLI of the trends.earth Environment. It allows to create and test custom scripts locally. It also can be used to publish the scripts to the trends.earth Environment
 
-Check out the other parts of the GEF project:
+Check out the other parts of the trends.earth project:
 
-- The API [GEF API](https://github.com/Vizzuality/GEF-API)
-- The GEF core platform [GEF Environment](https://github.com/Vizzuality/GEF-Environment)
-- A web app to explore and manage the API entities [GEF UI](https://github.com/Vizzuality/GEF-UI)
+- The API [trends.earth API](https://github.com/Vizzuality/trends.earth-API)
+- The trends.earth core platform [trends.earth Environment](https://github.com/Vizzuality/trends.earth-Environment)
+- A web app to explore and manage the API entities [trends.earth UI](https://github.com/Vizzuality/trends.earth-UI)
 
 ## Getting started
 
@@ -16,15 +16,31 @@ Check out the other parts of the GEF project:
 
 - Python 3 [Download Python](https://www.python.org/)
 - pip (pip3). You can check the version you have installed doing ```pip -V```
+
+### Installation from pypi
+
+```
+- pip install trends-earth-cli
+```
+
+### Usage
+
+```
+- trends
+```
+
+### Installation from repository
+
+Make sure you have virtualenv already installed on your machine
+
 - virtualenv. ```pip install virtualenv```
 
-### Setup
 
 - Clone the repo and go to the folder
 
 ```
-git clone https://github.com/Vizzuality/GEF-CLI
-cd GEF-CLI
+git clone https://github.com/Vizzuality/trends.earth-CLI
+cd trends.earth-CLI
 ```
 
 - Create a virtual environment if you haven't already
@@ -127,10 +143,11 @@ python gefcli login
 ### Publish
 
 This command allows the user to publish the script to prod. As it was said, it's required to be logged before
-publish a script.
+publish a script. Set the parameter public to True if the script is publicly visible.
 
 ```
 python gefcli publish
+python gefcli publish --public=True
 ```
 
 ### Logs
@@ -151,11 +168,19 @@ python gefcli info
 
 ### Clear
 
-Not yet
+Delete temporary docker images
+
+```
+python gefcli clear
+```
 
 ### Download
 
-Not yet
+Download the script code
+
+```
+python gefcli download <script_id>
+```
 
 ## Examples
 

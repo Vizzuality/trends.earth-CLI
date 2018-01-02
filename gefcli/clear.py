@@ -5,6 +5,7 @@ from __future__ import division
 from __future__ import print_function
 
 import os
+import logging
 import subprocess
 
 
@@ -15,7 +16,7 @@ def clear_unusued_docker():
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)
-        return False
+        return True
 
 
 def run():
