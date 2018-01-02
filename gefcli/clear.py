@@ -16,7 +16,7 @@ def clear_unusued_docker():
         return True
     except subprocess.CalledProcessError as error:
         logging.error(error)
-        return False
+        return True
 
 
 def run():
