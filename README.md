@@ -1,4 +1,4 @@
-# trends.earth CLI
+# trends.earth CLI ![trends.earth-CLI Status](https://travis-ci.org/Vizzuality/trends.earth-CLI.svg?branch=master "trends.earth-CLI Status")
 
 This project belongs to the trends.earth Project.
 
@@ -20,58 +20,58 @@ Check out the other parts of the trends.earth project:
 ### Installation from pypi
 
 ```
-- pip install trends-earth-cli
+$ pip install trends-earth-cli
 ```
 
 ### Usage
 
 ```
-- trends
+$ trends
 ```
 
 ### Installation from repository
 
 Make sure you have virtualenv already installed on your machine
 
-- virtualenv. ```pip install virtualenv```
+- virtualenv. ```$ pip install virtualenv```
 
 
 - Clone the repo and go to the folder
 
 ```
-git clone https://github.com/Vizzuality/trends.earth-CLI
-cd trends.earth-CLI
+$ git clone https://github.com/Vizzuality/trends.earth-CLI
+$ cd trends.earth-CLI
 ```
 
 - Create a virtual environment if you haven't already
 
 ```
-virtualenv -p python3 venv
+$ virtualenv -p python3 venv
 ```
 
 Note that if you are using Windows, and your default python is python 2.7, then
 you will need to specify the path to Python 3 using `--python`. For example:
 
 ```
-virtualenv --python "C:\Users\azvol\Anaconda3\python.exe" venv
+$ virtualenv --python "C:\Users\azvol\Anaconda3\python.exe" venv
 ```
 
 - Activate it (you should do this step any time you want to run the project locally)
 
 ```
-source venv/bin/activate
+$ source venv/bin/activate
 ```
 
 or (on a Windows box using a Docker Quickstart terminal):
 
 ```
-source venv/Scripts/activate
+$ source venv/Scripts/activate
 ```
 
 - Install the dependencies
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Now you can use the CLI commands
@@ -84,7 +84,7 @@ To create a new script.
 The program will ask you for a name of your script.
 
 ```
-python gefcli create
+$ python gefcli create
 ```
 
 ### Start
@@ -93,14 +93,14 @@ To run a script locally.
 First, go to the folder where the script has been created and run the following:
 
 ```
-python (relativepath) start
+$ python (relativepath) start
 ```
 
 For instance:
 
 ```
-python ../../gefcli start
-python ../gefcli start
+$ python ../../gefcli start
+$ python ../gefcli start
 ```
 
 ### Config
@@ -110,26 +110,26 @@ To configure basic params like a GEE Account.
 For EE_PRIVATE_KEY param it's neccesary set the value in base64 encode. To encode use the next command:
 
 ```
-cat privatekey.pem | base64
+$ cat privatekey.pem | base64
 ```
 
 ```
-python gefcli config set EE_SERVICE_ACCOUNT <value>
-python gefcli config set EE_PRIVATE_KEY <base64value>
+$ python gefcli config set EE_SERVICE_ACCOUNT <value>
+$ python gefcli config set EE_PRIVATE_KEY <base64value>
 ```
 
 It is also possible to see the current config
 
 ```
-python gefcli config show EE_SERVICE_ACCOUNT
-python gefcli config show EE_PRIVATE_KEY
+$ python gefcli config show EE_SERVICE_ACCOUNT
+$ python gefcli config show EE_PRIVATE_KEY
 ```
 
 And even unset one or both of them
 
 ```
-python gefcli config unset EE_SERVICE_ACCOUNT
-python gefcli config unset EE_PRIVATE_KEY
+$ python gefcli config unset EE_SERVICE_ACCOUNT
+$ python gefcli config unset EE_PRIVATE_KEY
 ```
 
 ### Login
@@ -137,7 +137,7 @@ python gefcli config unset EE_PRIVATE_KEY
 To log in the API. This step is necessary when publishing scripts
 
 ```
-python gefcli login
+$ python gefcli login
 ```
 
 ### Publish
@@ -146,8 +146,8 @@ This command allows the user to publish the script to prod. As it was said, it's
 publish a script. Set the parameter public to True if the script is publicly visible.
 
 ```
-python gefcli publish
-python gefcli publish --public=True
+$ python gefcli publish
+$ python gefcli publish --public=True
 ```
 
 ### Logs
@@ -155,7 +155,7 @@ python gefcli publish --public=True
 To see the build logs printed by the script.
 
 ```
-python gefcli logs
+$ python gefcli logs
 ```
 
 ### Info
@@ -163,7 +163,7 @@ python gefcli logs
 To see some basic info about the script
 
 ```
-python gefcli info
+$ python gefcli info
 ```
 
 ### Clear
@@ -171,7 +171,7 @@ python gefcli info
 Delete temporary docker images
 
 ```
-python gefcli clear
+$ python gefcli clear
 ```
 
 ### Download
@@ -179,7 +179,7 @@ python gefcli clear
 Download the script code
 
 ```
-python gefcli download <script_id>
+$ python gefcli download <script_id>
 ```
 
 ## Examples
@@ -191,7 +191,7 @@ It defines, trains and evaluates a simple perceptron model to identify handwritt
 You can test the behavior doing the following:
 
 ```
-python ../../gefcli start
+$ python ../../gefcli start
 ```
 
 ### Numpy

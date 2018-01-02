@@ -1,0 +1,6 @@
+deploy:
+  provider: pypi
+  user: "archelogos"
+  password: $PYPI_PASS
+  on:
+      branch: master
