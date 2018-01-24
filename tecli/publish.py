@@ -6,9 +6,9 @@ from __future__ import print_function
 
 from termcolor import colored
 
-from gefcli.configuration import SETTINGS
+from tecli.configuration import SETTINGS
 
-from gefcli import config
+from tecli import config
 
 import tarfile
 import logging

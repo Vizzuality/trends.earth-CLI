@@ -16,8 +16,8 @@ import requests
 import time
 
 
-from gefcli.configuration import SETTINGS
-from gefcli import config
+from tecli.configuration import SETTINGS
+from tecli import config
 
 def read_jwt_token():
     """Obtain logs token of config user"""
