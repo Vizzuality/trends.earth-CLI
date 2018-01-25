@@ -7,7 +7,7 @@ from __future__ import print_function
 import logging
 
 import fire
-from gefcli.commands import Commands
+from tecli.commands import Commands
 
 logging.basicConfig(
     level='DEBUG',

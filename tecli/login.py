@@ -5,9 +5,9 @@ from __future__ import division
 from __future__ import print_function
 
 from getpass import getpass
-from gefcli.configuration import SETTINGS
+from tecli.configuration import SETTINGS
 
-from gefcli import config
+from tecli import config
 
 import re
 import requests
