@@ -84,7 +84,7 @@ To create a new script.
 The program will ask you for a name of your script.
 
 ```
-$ python gefcli create
+$ python tecli create
 ```
 
 ### Start
@@ -99,8 +99,8 @@ $ python (relativepath) start
 For instance:
 
 ```
-$ python ../../gefcli start
-$ python ../gefcli start
+$ python ../../tecli start
+$ python ../tecli start
 ```
 
 ### Config
@@ -114,22 +114,22 @@ $ cat privatekey.pem | base64
 ```
 
 ```
-$ python gefcli config set EE_SERVICE_ACCOUNT <value>
-$ python gefcli config set EE_PRIVATE_KEY <base64value>
+$ python tecli config set EE_SERVICE_ACCOUNT <value>
+$ python tecli config set EE_PRIVATE_KEY <base64value>
 ```
 
 It is also possible to see the current config
 
 ```
-$ python gefcli config show EE_SERVICE_ACCOUNT
-$ python gefcli config show EE_PRIVATE_KEY
+$ python tecli config show EE_SERVICE_ACCOUNT
+$ python tecli config show EE_PRIVATE_KEY
 ```
 
 And even unset one or both of them
 
 ```
-$ python gefcli config unset EE_SERVICE_ACCOUNT
-$ python gefcli config unset EE_PRIVATE_KEY
+$ python tecli config unset EE_SERVICE_ACCOUNT
+$ python tecli config unset EE_PRIVATE_KEY
 ```
 
 ### Login
@@ -137,7 +137,7 @@ $ python gefcli config unset EE_PRIVATE_KEY
 To log in the API. This step is necessary when publishing scripts
 
 ```
-$ python gefcli login
+$ python tecli login
 ```
 
 ### Publish
@@ -146,8 +146,8 @@ This command allows the user to publish the script to prod. As it was said, it's
 publish a script. Set the parameter public to True if the script is publicly visible.
 
 ```
-$ python gefcli publish
-$ python gefcli publish --public=True
+$ python tecli publish
+$ python tecli publish --public=True
 ```
 
 ### Logs
@@ -155,7 +155,7 @@ $ python gefcli publish --public=True
 To see the build logs printed by the script.
 
 ```
-$ python gefcli logs
+$ python tecli logs
 ```
 
 ### Info
@@ -163,7 +163,7 @@ $ python gefcli logs
 To see some basic info about the script
 
 ```
-$ python gefcli info
+$ python tecli info
 ```
 
 ### Clear
@@ -171,7 +171,7 @@ $ python gefcli info
 Delete temporary docker images
 
 ```
-$ python gefcli clear
+$ python tecli clear
 ```
 
 ### Download
@@ -179,7 +179,7 @@ $ python gefcli clear
 Download the script code
 
 ```
-$ python gefcli download <script_id>
+$ python tecli download <script_id>
 ```
 
 ## Examples
@@ -191,7 +191,7 @@ It defines, trains and evaluates a simple perceptron model to identify handwritt
 You can test the behavior doing the following:
 
 ```
-$ python ../../gefcli start
+$ python ../../tecli start
 ```
 
 ### Numpy

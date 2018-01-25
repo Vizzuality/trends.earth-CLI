@@ -12,8 +12,8 @@ import json
 import requests
 
 
-from gefcli.configuration import SETTINGS
-from gefcli import config
+from tecli.configuration import SETTINGS
+from tecli import config
 
 def read_jwt_token():
     """Obtain jwt token of config user"""

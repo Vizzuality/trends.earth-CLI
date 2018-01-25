@@ -8,7 +8,7 @@ from termcolor import colored
 
 import logging
 
-from gefcli import create, start, config, login, publish, download, clear, info, logs
+from tecli import create, start, config, login, publish, download, clear, info, logs
 
 class Commands(object):
     """GEF Command class Wrapper"""

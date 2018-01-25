@@ -12,7 +12,7 @@ import time
 import logging
 import base64
 
-from gefcli import config
+from tecli import config
 from shutil import copytree, copyfile
 
 
