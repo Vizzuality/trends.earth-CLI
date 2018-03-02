@@ -58,7 +58,7 @@ def sure_overwrite():
     return sure == 'y'
 
 
-def publish(public=False):
+def publish(public=False, overwrite=False):
     """Publish script in API"""
     tarfile = None
     try:
@@ -72,7 +72,11 @@ def publish(public=False):
 
         response = None
         if 'id' in configuration:
-            sure = sure_overwrite()
+            if overwrite:
+                sure = True
+            else:
+                sure = sure_overwrite()
+
             if not sure:
                 return False
 
@@ -106,6 +110,6 @@ def publish(public=False):
             os.remove(path=tarfile)
 
 
-def run(public=False):
+def run(public=False, overwrite=False):
     """Publish command"""
-    return publish(public)
+    return publish(public, overwrite)
