@@ -55,7 +55,7 @@ def sure_overwrite():
         if sure == '':
             sure = 'y'
 
-    return sure == 'y'
+    return sure == 'y' or sure == 'Y'
 
 
 def publish(public=False):
