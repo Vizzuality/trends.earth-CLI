@@ -62,11 +62,11 @@ class Commands(object):
             logging.error(error)
 
     @staticmethod
-    def publish(public=False):
+    def publish(public=False, overwrite=False):
         """Publish a script"""
         try:
             print('Publishing the script')
-            if publish.run(public):
+            if publish.run(public, overwrite):
                 print(colored('Script published successfully', 'green'))
             else:
                 print(colored('Error publishing the script', 'red'))
